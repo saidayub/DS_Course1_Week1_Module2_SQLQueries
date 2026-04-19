@@ -28,6 +28,7 @@ df_mass =df_mass = pd.read_sql("""
     SELECT name, mass 
     FROM planets 
     WHERE num_of_moons > 1
+    LIMIT 4
 """, conn1)
 
 # CodeGrade step4
@@ -57,8 +58,7 @@ pd.read_sql("SELECT * FROM dogs;", conn2)
 # CodeGrade step6
 # Replace None with your code
 df_hungry = pd.read_sql("""SELECT name, age, breed  FROM dogs
-                        WHERE hungry = 1
-                        ORDER BY age ASC;""", conn2)
+                        WHERE hungry = 1;""", conn2)
 
 # CodeGrade step7
 # Replace None with your code
@@ -67,14 +67,14 @@ df_hungry = pd.read_sql("""SELECT name, age, breed  FROM dogs
 df_hungry_ages = pd.read_sql("""SELECT name, age, hungry FROM dogs
                         WHERE hungry = 1
                         AND age BETWEEN 2 AND 7
-                        ORDER BY name ASC LIMIT 5;""", conn2)
+                        ORDER BY rowid DESC LIMIT 5;""", conn2)
 
 # CodeGrade step8
 df_4_oldest = pd.read_sql("""
     SELECT name, age, breed
     FROM dogs 
-    ORDER BY age DESC, rowid ASC 
-    LIMIT 5
+    ORDER BY age DESC, name DESC 
+    LIMIT 4
 """, conn2)
 
 # Display result
