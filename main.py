@@ -24,17 +24,17 @@ df_name_seven = pd.read_sql("""SELECT name, mass FROM planets
 
 # CodeGrade step3
 # Replace None with your code
-df_mass = pd.read_sql("SELECT * FROM planets WHERE num_of_moons=0 AND mass < 1.0", conn1)
+df_mass = pd.read_sql("SELECT name, mass FROM planets WHERE mass < 1.0", conn1)
 
 
 # CodeGrade step4
 # Replace None with your code
 df_mass_moon = pd.read_sql("""
-    SELECT * FROM planets
-    WHERE num_of_moons = 0 
+    SELECT *
+    FROM planets
+    WHERE num_of_moons >= 1
     AND mass < 1.00
-    """, conn1)
-
+""", conn1)
 # CodeGrade step5
 # Replace None with your code
 df_blue = pd.read_sql("""SELECT name, color FROM planets
@@ -59,8 +59,11 @@ df_hungry = pd.read_sql("""SELECT name, age, breed  FROM dogs
 
 # CodeGrade step7
 # Replace None with your code
+# CodeGrade step7
+# Replace None with your code
 df_hungry_ages = pd.read_sql("""SELECT name, age, hungry FROM dogs
-                        WHERE age BETWEEN 2 AND 7
+                        WHERE hungry
+                        AND age BETWEEN 2 AND 7
                         ORDER BY name ASC LIMIT 5;""", conn2)
 
 # CodeGrade step8
